@@ -1,61 +1,338 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Toko Pakaian Modern</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Catatan Baju</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #eef2f3;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        h1 {
+            text-align: center;
+            color: #4a4a4a;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        input, button {
+            padding: 10px;
+            font-size: 1em;
+            border: 2px solid #4caf50;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        input:focus, button:hover {
+            border-color: #45a049;
+            outline: none;
+            box-shadow: 0 0 5px rgba(72, 184, 70, 0.5);
+        }
+
+        button {
+            background-color: #4caf50;
+            color: white;
+            cursor: pointer;
+            margin-top: 10px; /* Tambahkan margin untuk tombol */
+        }
+
+        button:disabled {
+            background-color: #ccc;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            font-size: 1.1em;
+        }
+
+        th {
+            background-color: #4caf50;
+            color: white;
+        }
+
+        /* Responsiveness */
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2em;
+            }
+
+            input, button {
+                font-size: 0.9em;
+            }
+
+            th, td {
+                font-size: 1em;
+                padding: 10px;
+            }
+        }
+
+        /* Button styling for better accessibility */
+        button {
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        button:hover {
+            background-color: #45a049;
+            transform: translateY(-1px);
+        }
+
+        /* Add margin for table rows */
+        tr {
+            margin: 10px 0;
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <h1>Toko Pakaian Modern</h1>
-        <p>Temukan gaya Anda di sini!</p>
-    </header>
-
     <div class="container">
-        <div class="item">
-            <h2>Kemeja Pria</h2>
-            <img src="https://s1.bukalapak.com/img/6235064093/large/kemeja_pria_cowok_kerja_kantor_formal_lengan_panjang_model_k.jpg" alt="Kemeja Pria">
-            <p>Harga: Rp 150.000</p>
-            <a href="https://wa.link/qjsbkb" class="button">Beli Sekarang</a>
-        </div>
-        <div class="item">
-            <h2>Dress Wanita</h2>
-            <img src="https://s1.bukalapak.com/img/14422548892/large/data.jpeg" alt="Dress Wanita">
-            <p>Harga: Rp 200.000</p>
-            <a href="https://wa.link/6naakw" class="button">Beli Sekarang</a>
-        </div>
-        <div class="item">
-            <h2>Celana Jeans</h2>
-            <img src="https://s4.bukalapak.com/img/4425626201/w-1000/Celana_Jeans_Wrangler_Bio_Blitz__Celana_Panjang_Pria__Celana.jpg" alt="Celana Jeans">
-            <p>Harga: Rp 180.000</p>
-            <a href="https://wa.link/wtkk0q" class="button">Beli Sekarang</a>
-        </div>
-        <div class="item">
-            <h2>Flat Shoes</h2>
-            <img src="https://cf.shopee.co.id/file/4c83397cf76a2e294f0dfe1233400db2" alt="flat shoes">
-            <p>Harga: Rp 200.000</p>
-            <a href="https://wa.link/s3dupb" class="button">Beli Sekarang</a>
-        </div>
-    </div>
+        <h1>Catatan Baju</h1>
+        
+        <form id="savingsForm">
+            <input type="text" id="name" placeholder="Nama Orang" required>
+            <input type="number" id="target" placeholder="Target Tabungan (Rp)" required>
+            <button type="submit">Tambahkan Orang</button>
+        </form>
 
-    <div class="members">
-        <h3>Daftar Anggota</h3>
-        <div class="member">1. Suci cahyani - Manajer</div>
-        <div class="member">2. Marsela sanusi - Staf Penjualan</div>
-        <div class="member">3. Safa aulia p - Desainer pakain</div>
-        <div class="member">4. Amung p - Marketin & promosi</div>
-        <div class="member">5. Andika nabil p - Administrasi & Keuangan</div>
-    </div>
+        <button id="downloadBtn">Download Excel</button> <!-- Tombol Download -->
 
-    <div class="contact">
-        <h3>Hubungi Admin</h3>
-        <p>Email: admin123@tokopakaian.com</p>
-        <p>Telepon: 0838-7876-4454</p>
+        <table id="savingsTable">
+            <thead>
+                <tr>
+                    <th>Nama</th>
+                    <th>Target Tabungan</th>
+                    <th>Jumlah Terkumpul</th>
+                    <th>Tambah Tabungan</th>
+                    <th>Kurangi Tabungan</th>
+                    <th>Aksi</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Data akan muncul di sini -->
+            </tbody>
+        </table>
     </div>
+    
+    <script>
+        const correctPassword = '123456'; // Set password yang benar
 
-    <footer>
-        <p>V developer &copy; 2024 Toko Pakaian Modern</p>
-    </footer>
+        // Event untuk form
+        document.getElementById('savingsForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const target = parseInt(document.getElementById('target').value);
+
+            if (name && target) {
+                addPerson(name, target);
+                displaySavings();
+            }
+
+            this.reset();
+        });
+
+        // Ambil data dari localStorage
+        function getSavings() {
+            return JSON.parse(localStorage.getItem('savings')) || [];
+        }
+
+        // Set data ke localStorage
+        function setSavings(savings) {
+            localStorage.setItem('savings', JSON.stringify(savings));
+        }
+
+        // Tambah orang baru
+        function addPerson(name, target) {
+            const savings = getSavings();
+            savings.push({ name, target, collected: 0 });
+            setSavings(savings);
+        }
+
+        // Update tabungan orang tertentu
+        function updateSavings(index, amount) {
+            const savings = getSavings();
+            savings[index].collected += amount;
+            setSavings(savings);
+            displaySavings();
+        }
+
+        // Kurangi tabungan orang tertentu
+        function decreaseSavings(index, amount) {
+            const savings = getSavings();
+            savings[index].collected -= amount;
+            if (savings[index].collected < 0) savings[index].collected = 0; // Tidak bisa kurang dari 0
+            setSavings(savings);
+            displaySavings();
+        }
+
+        // Hapus orang dari list
+        function deletePerson(index) {
+            const password = prompt('Masukkan password untuk menghapus:');
+            if (password === correctPassword) {
+                const savings = getSavings();
+                savings.splice(index, 1);
+                setSavings(savings);
+                displaySavings();
+            } else {
+                alert('Password salah! Hapus gagal.');
+            }
+        }
+
+        // Format uang menjadi Rp
+        function formatRupiah(amount) {
+            return "Rp " + amount.toLocaleString("id-ID");
+        }
+
+        // Format angka dengan titik sebagai pemisah ribuan
+        function formatWithDot(amount) {
+            return amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."); // Tambahkan titik setiap 3 digit
+        }
+
+        // Tampilkan data tabungan
+        function displaySavings() {
+            const savings = getSavings();
+            const savingsTable = document.getElementById('savingsTable').querySelector('tbody');
+            savingsTable.innerHTML = '';
+
+            savings.forEach((person, index) => {
+                const row = document.createElement('tr');
+
+                // Nama
+                const nameCell = document.createElement('td');
+                nameCell.textContent = person.name;
+
+                // Target tabungan
+                const targetCell = document.createElement('td');
+                targetCell.textContent = formatRupiah(person.target);
+
+                // Jumlah terkumpul
+                const collectedCell = document.createElement('td');
+                collectedCell.textContent = formatRupiah(person.collected);
+
+                // Input jumlah yang ingin ditambahkan
+                const addSavingsCell = document.createElement('td');
+                const addInput = document.createElement('input');
+                addInput.type = 'number';
+                addInput.placeholder = 'Tambah (Rp)';
+                addInput.min = '0';
+                
+                const addButton = document.createElement('button');
+                addButton.textContent = 'Tambah';
+                addButton.onclick = () => {
+                    const amount = parseInt(addInput.value);
+                    if (!isNaN(amount) && amount > 0) {
+                        updateSavings(index, amount);
+                    }
+                    addInput.value = '';
+                };
+
+                addSavingsCell.appendChild(addInput);
+                addSavingsCell.appendChild(addButton);
+
+                // Input jumlah yang ingin dikurangi
+                const decreaseSavingsCell = document.createElement('td');
+                const decreaseInput = document.createElement('input');
+                decreaseInput.type = 'number';
+                decreaseInput.placeholder = 'Kurangi (Rp)';
+                decreaseInput.min = '0';
+                
+                const decreaseButton = document.createElement('button');
+                decreaseButton.textContent = 'Kurangi';
+                decreaseButton.onclick = () => {
+                    const amount = parseInt(decreaseInput.value);
+                    if (!isNaN(amount) && amount > 0) {
+                        decreaseSavings(index, amount);
+                    }
+                    decreaseInput.value = '';
+                };
+
+                decreaseSavingsCell.appendChild(decreaseInput);
+                decreaseSavingsCell.appendChild(decreaseButton);
+
+                // Aksi hapus
+                const actionCell = document.createElement('td');
+                const deleteButton = document.createElement('button');
+                deleteButton.textContent = 'Hapus';
+                deleteButton.onclick = () => deletePerson(index);
+                actionCell.appendChild(deleteButton);
+
+                row.appendChild(nameCell);
+                row.appendChild(targetCell);
+                row.appendChild(collectedCell);
+                row.appendChild(addSavingsCell);
+                row.appendChild(decreaseSavingsCell);
+                row.appendChild(actionCell);
+
+                savingsTable.appendChild(row);
+            });
+        }
+
+        // Fungsi untuk mendownload data sebagai file CSV
+        function downloadCSV() {
+            const savings = getSavings();
+            let csvContent = "data:text/csv;charset=utf-8,";
+            csvContent += "Nama,Target Tabungan,Jumlah Terkumpul,Status\n"; // Header CSV
+
+            savings.forEach(person => {
+                // Tentukan status Lunas atau Belum Lunas
+                const status = person.collected >= person.target ? 'Lunas' : 'Belum Lunas';
+                const row = `${person.name},${formatWithDot(person.target)},${formatWithDot(person.collected)},${status}`;
+                csvContent += row + "\n"; // Menambahkan setiap baris data
+            });
+
+            const encodedUri = encodeURI(csvContent);
+            const link = document.createElement("a");
+            link.setAttribute("href", encodedUri);
+            link.setAttribute("download", "catatan_baju.csv");
+            document.body.appendChild(link); // Append to the body
+
+            link.click(); // Simulate click to download
+            document.body.removeChild(link); // Remove link after download
+        }
+
+        // Event listener untuk tombol download
+        document.getElementById('downloadBtn').addEventListener('click', downloadCSV);
+
+        // Tampilkan data saat halaman di-load
+        displaySavings();
+    </script>
 </body>
 </html>
